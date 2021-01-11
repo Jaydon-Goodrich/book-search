@@ -3,6 +3,7 @@ const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
+    // Logic for Querying the data that we need
     Query: {
         users: async () => {
             return User.find()
@@ -20,7 +21,7 @@ const resolvers = {
             throw new AuthenticationError('Not logged in')
         }
     },
-
+    // Logic for the mutations login, addUser, saveBook, and removeBook
     Mutation: {
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
